@@ -16,9 +16,11 @@ repositories {
 }
 
 dependencies {
-    // Use JUnit test framework.
-    testImplementation libs.junit
+    // Use JUnit Jupiter for testing.
+    testImplementation 'org.junit.jupiter:junit-jupiter:5.10.2'
 
+    testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+    implementation files('libs/algs4.jar')
     // This dependency is used by the application.
     implementation libs.guava
 }
@@ -32,15 +34,25 @@ java {
 
 application {
     // Define the main class for the application.
-    mainClass = 'ifsc.poo.App'
+    mainClass = 'org.example.App'
 }
 
-jar {
-    manifest {
-        attributes 'Main-Class': 'ifsc.poo.App'
-    }
-}
+run{
 
-run {
     standardInput = System.in
+
+}
+
+
+tasks.named('test') {
+    // Use JUnit Platform for unit tests.
+    useJUnitPlatform()
+}
+
+dependencies {
+    implementation files('libs/barcode.jar')
+    implementation 'org.apache.httpcomponents.client5:httpclient5:5.4.2'
+    implementation 'com.google.zxing:core:3.5.3'
+    implementation 'com.google.zxing:javase:3.5.3'
+
 }
