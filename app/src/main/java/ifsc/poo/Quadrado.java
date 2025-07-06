@@ -2,32 +2,26 @@ package ifsc.poo;
 
 import edu.princeton.cs.algs4.Draw;
 
-public class Quadrado extends Figura {
-
-    public Quadrado(double x, double y, int tamanho, java.awt.Color cor, boolean preenchida) {
-        super(x, y, tamanho, cor, preenchida);
+public class Quadrado extends FiguraBase {
+    public Quadrado(double x, double y, double tamanho, java.awt.Color cor, boolean preenchido) {
+        super(x, y, tamanho, cor, preenchido);
     }
 
     @Override
-    public void desenhar(Draw draw) {
+    public void draw(Draw draw) {
         draw.setPenColor(cor);
-        double half = tamanho / 200.0;
-        if (preenchida) {
-            draw.filledSquare(x, y, half);
-        } else {
-            draw.square(x, y, half);
-        }
-    }
-
-    @Override
-    public double getPerimetro() {
-        double side = 2 * (tamanho / 200.0);
-        return 4 * side;
+        if (preenchido) draw.filledSquare(x, y, tamanho);
+        else draw.square(x, y, tamanho);
     }
 
     @Override
     public double getArea() {
-        double side = 2 * (tamanho / 200.0);
-        return side * side;
+        double lado = 2 * tamanho;
+        return lado * lado;
+    }
+
+    @Override
+    public double getPerimeter() {
+        return 8 * tamanho;
     }
 }
