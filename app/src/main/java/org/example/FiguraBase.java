@@ -1,9 +1,14 @@
-package ifsc.poo;
+package org.example;
 
 import java.awt.Color;
 
+/**
+ * Classe abstrata que centraliza atributos comuns entre figuras.
+ * Serve como base para herança, evitando duplicação de código.
+ */
 public abstract class FiguraBase implements FiguraGeometrica {
-    protected double x, y, tamanho;
+    protected double x, y;
+    protected double tamanho;
     protected Color cor;
     protected boolean preenchido;
 
@@ -21,4 +26,3 @@ public abstract class FiguraBase implements FiguraGeometrica {
         y += dy;
     }
 }
-
